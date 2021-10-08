@@ -10,6 +10,10 @@ import java.util.List;
 public interface LaptopRepository extends JpaRepository <Laptop, Long> {
 
     List<Laptop> findBymodelo (String modelo);
+
+    List<Laptop> findByram (Integer ram);
 }
+
+
 
 

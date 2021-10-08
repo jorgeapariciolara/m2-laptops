@@ -22,6 +22,7 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 		SpringApplication.run(M2Testing2JorgeAparicioApplication.class, args);
 	}
 
+
 	public void showMenu() {
 		System.out.println("Bienvenido/a a su tienda de informática, seleccione una opción: ");
 		System.out.println("0.- SALIR DE LA APLICACIÓN");
@@ -50,12 +51,19 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 				"black&white", 1755.75));
 
 		List<Laptop> laptops = laptopRepository.findBymodelo("Asus");
-		System.out.println(laptops);
+		for (Laptop laptop : laptops) {
+			System.out.println(laptop);
+		}
 
+		List<Laptop> laptops1 = laptopRepository.findByram(16);
+		for (Laptop laptop : laptops1) {
+			System.out.println(laptop);
+		}
+
+		/*
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
 			showMenu();
-
 
 			try {
 				int opcion = scanner.nextInt();
@@ -191,11 +199,14 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 			}
 
 		}
-
+*/
 	}
 
 
 }
+
+
+
 	/*
 	public void crudLaptop (){
 
