@@ -12,6 +12,10 @@ public interface LaptopRepository extends JpaRepository <Laptop, Long> {
     List<Laptop> findBymodelo (String modelo);
 
     List<Laptop> findByram (Integer ram);
+
+    List <Laptop> findByModeloAndRam (String modelo, Integer ram);
+
+    List <Laptop> findByPriceLessThan (Double price);
 }
 
 

@@ -34,6 +34,9 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 		System.out.println("6.- Borrar un ordenador (utilizando el id)");
 		System.out.println("7.- Borrar todos los ordenadores");
 		System.out.println("8.- Consultar todos los ordenadores (utilizando el modelo)");
+		System.out.println("9.- Consultar todos los ordenadores (utilizando la memoria ram)");
+		System.out.println("10.- Consultar todos los ordenadores (utilizando el fabricante y la memoria ram)");
+		System.out.println("11.- Consultar todos los ordenadores (precio más bajo)");
 	}
 
 	@Override
@@ -50,17 +53,8 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 		laptopRepository.save(new Laptop(null, "Apple", 16, 4,
 				"black&white", 1755.75));
 
-		List<Laptop> laptops = laptopRepository.findBymodelo("Asus");
-		for (Laptop laptop : laptops) {
-			System.out.println(laptop);
-		}
 
-		List<Laptop> laptops1 = laptopRepository.findByram(16);
-		for (Laptop laptop : laptops1) {
-			System.out.println(laptop);
-		}
 
-		/*
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
 			showMenu();
@@ -68,6 +62,7 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 			try {
 				int opcion = scanner.nextInt();
 				scanner.nextLine();
+				List<Laptop> laptops;
 
 				if (opcion == 0) {
 					System.out.println("Ha seleccionado la opción 0 - SALIR DE LA APLICACIÓN");
@@ -193,16 +188,54 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 						continue;
 					}
 
+				} else if (opcion == 8) {
+					System.out.println("Ha seleccionado la opción 8 - CONSULTAR TODOS LOS ORDENADORES UTILIZANDO" +
+							" EL MODELO");
+					System.out.println ("Introduzca el modelo");
+					String modelo = scanner.nextLine();
+					laptops = laptopRepository.findBymodelo(modelo);
+					for (Laptop laptop : laptops) {
+						System.out.println(laptop);
+					}
+
+				} else if (opcion == 9) {
+					System.out.println("Ha seleccionado la opción 9 - CONSULTAR TODOS LOS ORDENADORES" +
+							" UTILIZANDO LA MEMORIA RAM");
+					System.out.println ("Introduzca el RAM");
+					int ram = scanner.nextInt();
+					laptops = laptopRepository.findByram(ram);
+					for (Laptop laptop : laptops) {
+						System.out.println(laptop);
+					}
+
+				} else if (opcion == 10) {
+					System.out.println("Ha seleccionado la opción 10 - CONSULTAR" +
+							" UTILIZANDO EL MODELO Y LA MEMORIA RAM");
+					System.out.println("Introduzca el modelo:");
+					String modelo = scanner.nextLine();
+					System.out.println("Introduzca la memoria RAM:");
+					Integer ram = scanner.nextInt();
+					scanner.nextLine();
+					laptops = laptopRepository.findByModeloAndRam(modelo,ram);
+					for (Laptop laptop : laptops) {
+						System.out.println(laptop);
+					}
+
+				} else if (opcion == 11) {
+					System.out.println("Ha seleccionado la opción 9 - CONSULTAR TODOS LOS ORDENADORES" +
+							" PRECIO MÁS BAJO");
+					System.out.println ("Introduzca el precio");
+					double precio = scanner.nextDouble();
+					laptops = laptopRepository.findByPriceLessThan(precio);
+					for (Laptop laptop : laptops) {
+						System.out.println(laptop);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
-*/
 	}
-
-
 }
 
 
