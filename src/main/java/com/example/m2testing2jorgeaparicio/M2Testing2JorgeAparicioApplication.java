@@ -84,7 +84,7 @@ public class M2Testing2JorgeAparicioApplication implements CommandLineRunner {
 					System.out.println("Ha seleccionado la opción 2 - CONSULTAR TODOS LOS ORDENADORES");
 					laptops = laptopRepository.findAll();
 					if (laptops.isEmpty()) {
-						System.out.println("No hay ordenadores disponibles.");
+						System.out.println("En este momento, NO hay ordenadores disponibles.");
 					} else {
 						for (Laptop laptop : laptops) {
 							System.out.println(laptop);
